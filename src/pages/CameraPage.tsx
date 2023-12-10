@@ -34,10 +34,10 @@ const CameraPage: React.FC = () => {
       console.error("Invalid test mode:", testMode);
     }
   };
-
+  
   return (
     <IonPage>
-      <Header headerText="Distance Calculations" />
+      <Header headerText="AI Distance Calculations" />
       <IonContent fullscreen scrollY={false}>
         <PreTest />
         <div className="distance-button">
