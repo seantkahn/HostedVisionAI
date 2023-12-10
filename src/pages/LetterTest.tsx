@@ -30,7 +30,7 @@ function getDynamicFontSize(physicalSizeMm) {
 }
 
 const generateRandomString = () => {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const alphabet = "ADEFGHLMNPQSTVWXZ";
   let randomString = [];
   let usedIndices = new Set();
 
@@ -67,12 +67,15 @@ const LetterTest: React.FC = () => {
   useEffect(() => {
     if ("webkitSpeechRecognition" in window) {
       const webkitRecognition = new window.webkitSpeechRecognition();
-      const speechRecognitionList = new window.webkitSpeechGrammarList();
-      const grammar =
-        "#JSGF V1.0; grammar lettersAndNumbers; public <letterOrNumber> = (A | B | C | D | ... | Z | 0 | 1 | 2 | ... | 9);";
-      speechRecognitionList.addFromString(grammar, 1);
+      if ('webkitSpeechGrammarList' in window) {
 
-      webkitRecognition.grammars = speechRecognitionList;
+        const speechRecognitionList = new window.webkitSpeechGrammarList();
+        const grammar =
+          "#JSGF V1.0; grammar lettersAndNumbers; public <letterOrNumber> = (A | B | C | D | ... | Z | 0 | 1 | 2 | ... | 9);";
+        speechRecognitionList.addFromString(grammar, 1);
+        webkitRecognition.grammars = speechRecognitionList;
+      }
+
       webkitRecognition.maxAlternatives = 1;
       webkitRecognition.continuous = true;
       webkitRecognition.interimResults = true;
