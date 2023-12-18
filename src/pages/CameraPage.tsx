@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IonPage, IonButton, IonIcon, IonContent } from "@ionic/react";
+import { FaceMesh } from "@mediapipe/face_mesh";
 
 import { eyeOutline } from "ionicons/icons";
 import { useHistory } from "react-router-dom";
@@ -40,7 +41,7 @@ const CameraPage: React.FC = () => {
       <Header headerText="Distance Calculations" />
       <IonContent fullscreen scrollY={false}>
         <PreTest />
-        <div className="distance-button">
+        <div className="distance-button buttonContainer">
           <Button buttonText="Continue" onClickAction={continueToExam} />
         </div>
 

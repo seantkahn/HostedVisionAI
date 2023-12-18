@@ -4,6 +4,25 @@
   /* align-items: center; */
   height: 100%; /* This ensures the container takes up the full height of the viewport */
 }
+.PreTest {
+  position: relative;
+  width: 480px; /* Adjust the width as needed */
+  height: auto; /* Height will adjust based on content */
+}
+
+.webcam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.output_canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 
 .webcam {
   width: 640px; /* Adjust as needed */
@@ -17,4 +36,24 @@
 
 .canvas-style {
   font-size: 100px;
+}
+Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%; /* This ensures the container takes up the full height of the viewport */
+}
+.enable-predictions {
+  position: absolute;
+  top: 750px;
+  left: 0;
+  width: 100%;
+  padding: 100px;
+}
+.distance-button {
+  position: absolute;
+  top: 750px;
+  left: 0;
+  width: 100%;
 }

@@ -16,6 +16,7 @@ import WelcomePage from "../components/Welcome/WelcomePage";
 import Header from "../components/Header/Header";
 import { useHistory } from "react-router";
 import Button from "../components/Button/Button";
+import Frame from "../components/Frame";
 
 const Home: React.FC = () => {
   const history = useHistory();

@@ -1,20 +1,10 @@
-import { FaceMesh } from "@mediapipe/face_mesh";
-import { Camera } from "@mediapipe/camera_utils";
-import * as tf from "@tensorflow/tfjs";
-import { Category, DrawingUtils, FaceLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
-import * as vision from "@mediapipe/tasks-vision";
-import * as cam from "@mediapipe/camera_utils";
-import Webcam from "react-webcam";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from 'react';
+import vision from "@mediapipe/tasks-vision";
 import { useHistory } from "react-router-dom";
-import "./Pretest.css";
-import { IonPage, IonContent, IonButton, IonIcon } from "@ionic/react";
-import { eyeOutline } from "ionicons/icons";
-import SampleTest from "../components/PreTest";
-import Header from "../components/Header/Header";
-import Button from "../components/Button/Button";
-import { useLocation } from "react-router-dom";
-const PreTest: React.FC = () => {
+import Webcam from "react-webcam";
+import * as tf from "@tensorflow/tfjs";
+
+const DistanceTest: React.FC = () => {
   const [faceLandmarker, setFaceLandmarker] = useState<any>(null);
   const [webcamRunning, setWebcamRunning] = useState<boolean>(false);
   const webcamRef = useRef<Webcam>(null);
@@ -25,41 +15,9 @@ const PreTest: React.FC = () => {
   const knownDistanceMm = knownDistanceInches * 25.4; // Convert inches to mm
   const knownWidthMm = 63;//mm
   const focalLengthPixels = 0.78; // Your calculated focal length in pixels
+  
 
-  function calculateDistanceFromWebcam(
-    focalLengthPixels: number,
-    pixelDistanceBetweenEyes: number,
-    knownWidthMm: number
-  ) {
-    // Calculate the distance from the webcam to the face using the focal length
-    return (focalLengthPixels * knownWidthMm) / pixelDistanceBetweenEyes;
-  }
-
-  // This function calculates the distance in mm based on the pixel distance and the known distance
-  function calculateDistanceInMm(
-    pixelDistance: number,
-    knownDistanceInMm: number,
-    referencePixelDistance: number
-  ) {
-    return (pixelDistance * knownDistanceInMm) / referencePixelDistance;
-  }
-
-  function calculateEyeDistanceFromWebcam(
-    pixelDistanceBetweenEyes: number,
-    knownDistanceInMm: number,
-    videoWidth: number,
-    FOV: number
-  ) {
-    // Calculate the number of pixels per millimeter
-    const pixelsPerMm = pixelDistanceBetweenEyes / knownDistanceInMm;
-    // Assuming the video width represents the full FOV, calculate the FOV in mm
-    const fovWidthMm = videoWidth / pixelsPerMm;
-    // Use trigonometry to estimate the distance from the camera to the face
-    // This is a simplification and assumes a flat plane and central positioning
-    const distanceFromCameraMm =
-      fovWidthMm / 2 / Math.tan((FOV / 2) * (Math.PI / 180));
-    return distanceFromCameraMm;
-  }
+  // Load the FaceLandmarker
   useEffect(() => {
     const loadFaceLandmarker = async () => {
       const { FaceLandmarker, FilesetResolver } = vision;
@@ -168,10 +126,9 @@ const PreTest: React.FC = () => {
         console.log(`Distance from webcam: ${distanceFromWebcamInches.toFixed(2)} inches`);
 
         canvasCtx.font = '18px Arial';
-        canvasCtx.fillStyle = 'Green';
+        canvasCtx.fillStyle = 'black';
         canvasCtx.save(); // Save the current state
-        // canvasCtx.scale(-1, 1); // Flip the context horizontally
-        // canvasCtx.translate(-canvas.width, 0); // Translate the canvas context
+
   
         canvasCtx.clearRect(0, 0, 200, 50); // Clear a rectangle for the text
         canvasCtx.fillText(`Distance: ${distanceFromWebcamInches.toFixed(2)} inches`, 10, 30);
@@ -196,18 +153,22 @@ const PreTest: React.FC = () => {
   };
 
 
+  // Render the component
   return (
-    <div className="PreTest" onClick={enableCam}>
-      <div>
-      <Webcam ref={webcamRef} className="webcam" autoPlay playsInline onClick={enableCam}/>
-      <canvas ref={canvasRef} className="output_canvas" onClick={enableCam}></canvas>
-      </div>
-      <div className="enable-predictions distance-button buttonContainer button-container">
-          <Button buttonText="Distance" onClickAction={enableCam} />
-        </div>
+    <div>
+      <Webcam
+        ref={webcamRef}
+        id="webcam"
+        style={{ width: videoWidth }}
+        onUserMedia={onWebcamStart}
+        audio={false}  // Disable audio to prevent feedback issues
+      />
+      <canvas ref={canvasRef} id="output_canvas" />
+      <button onClick={enableCam}>
+        {webcamRunning ? 'DISABLE PREDICTIONS' : 'ENABLE PREDICTIONS'}
+      </button>
     </div>
-    
   );
 };
 
-export default PreTest;
+export default DistanceTest;
