@@ -1,19 +1,28 @@
-.PreTest {
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  height: 100%; /* This ensures the container takes up the full height of the viewport */
-}
-.PreTest {
-  position: relative;
-  width: 480px; /* Adjust the width as needed */
-  height: auto; /* Height will adjust based on content */
-}
-
 .webcam {
   position: absolute;
   top: 0;
-  left: 0;
+  justify-content: center;
+}
+.distance-button-div button {
+  top: 400px;
+  z-index: 2; /* Ensure it's above the canvas and webcam */
+
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: env(safe-area-inset-bottom); /* For iOS Safari */
+  z-index: 10;
+}
+.output_canvas {
+z-index: 5;
+position: relative;
+
+}
+.webcam{
+  z-index: 1;
+}
+/* Adjusting button container for better mobile responsiveness */
+
+  /* left: -120px; /
   width: 100%;
 }
 
@@ -25,13 +34,13 @@
 }
 
 .webcam {
-  width: 640px; /* Adjust as needed */
-  height: 480px; /* Adjust as needed */
+  / width: 640px; /
+  height: 480px; / Adjust as needed /
 }
 
 .webcam-canvas {
-  /* width: 100%;  */
-  height: 90%; /* Make the canvas fill the container */
+  / width: 100%;  /
+  height: 90%; / Make the canvas fill the container /
 }
 
 .canvas-style {
@@ -42,18 +51,61 @@ Button {
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 100%; /* This ensures the container takes up the full height of the viewport */
+  height: 100%; 
 }
-.enable-predictions {
+/ .enable-predictions {
   position: absolute;
   top: 750px;
   left: 0;
   width: 100%;
   padding: 100px;
-}
-.distance-button {
+} /
+/ .distance-button {
   position: absolute;
-  top: 750px;
+  /* top: 750px; 
   left: 0;
   width: 100%;
+} /
+
+/ .webcamContainer {
+  margin: 0;
+  padding: 0;
+  left: 0;
+  right: 0;
+} */
+
+
+
+
+
+
+
+/* 
+.PreTest {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height 
 }
+
+.webcam, .output_canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Behind the buttons 
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 10px; /* Adjust as needed 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2; /* Above the canvas 
+}
+
+.button-container {
+  margin-bottom: 20px; /* Space between buttons 
+} */

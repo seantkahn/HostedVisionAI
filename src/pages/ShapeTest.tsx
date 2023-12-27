@@ -20,11 +20,11 @@ interface LocationState {
   eyeStrength?: string;
 }
 
-function getDynamicFontSize(physicalSizeMm: number) {
+function getDynamicFontSize(physicalSizeMm: any) {
   function getDevicePixelRatio() {
     if (window.screen.systemXDPI !== undefined && window.screen.logicalXDPI !== undefined && window.screen.systemXDPI > window.screen.logicalXDPI) {
-      return window.screen.systemXDPI / window.screen.logicalXDPI;
-    } else if (window.devicePixelRatio !== undefined) {
+      return window.screen.systemXDPI / window.screen.logicalXDPI;} 
+    if (window.devicePixelRatio !== undefined) {
       return window.devicePixelRatio;
     }
     return 1;
@@ -72,11 +72,13 @@ const ShapeTest: React.FC = () => {
   const history = useHistory();
   const [randomString, setRandomString] = useState(generateRandomString());
   const [buttonPressCount, setButtonPressCount] = useState(0);
-  const [recognition, setRecognition] = useState(null);
+  const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
+  
   const [isListening, setIsListening] = useState(false);
   const [visualAcuityIndex, setVisualAcuityIndex] = useState(7);
   const visualAcuityMeasurements = [0.8, 1, 1.2, 1.5, 2, 2.8, 4, 8];
   const eyeStrengthValues = ['20/20', '20/25', '20/30', '20/40', '20/50', '20/70', '20/100', '20/200'];
+  let webkitSpeechRecognition;
 
   const getFontSizePx = (mm: number) => {
     return getDynamicFontSize(mm);

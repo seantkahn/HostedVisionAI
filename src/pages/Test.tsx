@@ -53,18 +53,18 @@ const Test: React.FC = () => {
     return (focalLengthPixels * knownWidthMm) / pixelDistanceBetweenEyes;
   }
 
-  useEffect(() => {
-    createFaceLandmarker();
+  // useEffect(() => {
+  //   createFaceLandmarker();
 
-    // The cleanup function will handle unmounting
-    return () => {
-      if (webcamRef.current && webcamRef.current.srcObject) {
-        const mediaStream = webcamRef.current.srcObject as MediaStream;
-        const tracks = mediaStream.getTracks();
-        tracks.forEach((track) => track.stop());
-      }
-    };
-  }, []);
+  //   // The cleanup function will handle unmounting
+  //   return () => {
+  //     if (webcamRef.current && webcamRef.current.srcObject) {
+  //       const mediaStream = webcamRef.current.srcObject as MediaStream;
+  //       const tracks = mediaStream.getTracks();
+  //       tracks.forEach((track) => track.stop());
+  //     }
+  //   };
+  // }, []);
 
   const createFaceLandmarker = async () => {
     const filesetResolver = await vision.FilesetResolver.forVisionTasks(
@@ -146,8 +146,7 @@ const Test: React.FC = () => {
       <IonContent fullscreen className="ion-padding" scrollY={false}>
         <div className="instructions-container">
           <p className="instructions-text">
-            Hold your face in front of your webcam to get real-time face
-            landmarker detection. <br />
+            Hold your face in front of your webcam and tap/click the screen once or twice for live distance calculations <br />
             <br />
             Grant access to the webcam if
             prompted. Face should be parallel/level with camera and environment

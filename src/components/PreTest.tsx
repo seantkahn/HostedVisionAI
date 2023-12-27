@@ -14,6 +14,8 @@ import SampleTest from "../components/PreTest";
 import Header from "../components/Header/Header";
 import Button from "../components/Button/Button";
 import { useLocation } from "react-router-dom";
+
+
 const PreTest: React.FC = () => {
   const [faceLandmarker, setFaceLandmarker] = useState<any>(null);
   const [webcamRunning, setWebcamRunning] = useState<boolean>(false);
@@ -79,7 +81,21 @@ const PreTest: React.FC = () => {
     };
 
     loadFaceLandmarker();
+    return () => {
+      // If webcam is running, stop it
+      if (webcamRef.current && webcamRef.current.video) {
+        const stream = webcamRef.current.video.srcObject;
+        if (stream) {
+          const tracks = (stream as MediaStream).getTracks();
+          tracks.forEach(track => track.stop()); // Stop each track
+        }
+      }
+  
+      // Cancel any ongoing animation frame requests
+      setWebcamRunning(false); // This should stop the predictWebcam loop
+    };
   }, []);
+
   const onWebcamStart = () => {
     if (webcamRunning) {
         console.log('Trying to call predictwebcam from onwebcamstart');
@@ -97,7 +113,6 @@ const PreTest: React.FC = () => {
     }
 
     setWebcamRunning(!webcamRunning);
-
     // if (!webcamRunning) {
     //   const constraints = { video: true };
     //   navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
@@ -138,7 +153,7 @@ const PreTest: React.FC = () => {
     try {
         console.log('Trying face landmark detection');
 
-      const results = await faceLandmarker.detectForVideo(videoElement, performance.now());
+      let results = await faceLandmarker.detectForVideo(videoElement, performance.now());
       console.log('Detection results:', results);
       console.log('Face landmarks:', results.faceLandmarks[0]);
       console.log('Detection results:', results);
@@ -157,7 +172,7 @@ const PreTest: React.FC = () => {
   
         const webcamFOV = 60; // Approximate field of view of the webcam
         const knownPupillaryDistanceMm = 63; // Average pupillary distance in millimeters
-        const pixelDistanceBetweenEyes = calculatePixelDistance(
+        let pixelDistanceBetweenEyes = calculatePixelDistance(
           pointLeft.x, pointLeft.y,
           pointRight.x, pointRight.y
         );
@@ -165,10 +180,10 @@ const PreTest: React.FC = () => {
         const focalLengthPixels = 0.78;
         let distanceFromWebcamMm = (focalLengthPixels * knownPupillaryDistanceMm) / pixelDistanceBetweenEyes;
         let distanceFromWebcamInches = distanceFromWebcamMm / 25.4;
-        console.log(`Distance from webcam: ${distanceFromWebcamInches.toFixed(2)} inches`);
-
-        canvasCtx.font = '18px Arial';
-        canvasCtx.fillStyle = 'Green';
+        // console.log(`Distance from webcam: ${distanceFromWebcamInches.toFixed(2)} inches`);
+          try{
+        canvasCtx.font = '22px Arial';
+        canvasCtx.fillStyle = 'Yellow';
         canvasCtx.save(); // Save the current state
         // canvasCtx.scale(-1, 1); // Flip the context horizontally
         // canvasCtx.translate(-canvas.width, 0); // Translate the canvas context
@@ -176,16 +191,17 @@ const PreTest: React.FC = () => {
         canvasCtx.clearRect(0, 0, 200, 50); // Clear a rectangle for the text
         canvasCtx.fillText(`Distance: ${distanceFromWebcamInches.toFixed(2)} inches`, 10, 30);
         canvasCtx.restore(); // Restore the original state
-  
+          }
+          catch(e){
+            console.log("error drawing distance on canvas",e);
+          }
         console.log(`Distance from webcam: ${distanceFromWebcamInches.toFixed(2)} inches`);
       }
     }
     } catch (error) {
-      console.error("error calculating distance: ", error);
       console.error("error in predictWebcam: ", error);
-
     }
-  
+
     if (webcamRunning) {
       window.requestAnimationFrame(predictWebcam);
     }
@@ -197,15 +213,23 @@ const PreTest: React.FC = () => {
 
 
   return (
+    // <div className="PreTest" onClick={enableCam}>
+      
+    //   <Webcam ref={webcamRef} className="webcam" autoPlay />
+    //   <canvas ref={canvasRef} className="output_canvas" onClick={enableCam}></canvas>
+      
+    //   <div className="enable-predictions distance-button buttonContainer button-container">
+    //       <Button buttonText="Distance" onClickAction={enableCam} />
+    //     </div>
+    // </div>
     <div className="PreTest" onClick={enableCam}>
-      <div>
-      <Webcam ref={webcamRef} className="webcam" autoPlay playsInline onClick={enableCam}/>
-      <canvas ref={canvasRef} className="output_canvas" onClick={enableCam}></canvas>
-      </div>
-      <div className="enable-predictions distance-button buttonContainer button-container">
-          <Button buttonText="Distance" onClickAction={enableCam} />
-        </div>
-    </div>
+    <Webcam ref={webcamRef} className="webcam" mirrored={true} autoPlay  />
+    <canvas ref={canvasRef} className="output_canvas"></canvas>
+    
+    {/* <div className="buttonContainer">
+      <Button buttonText="Distance" onClickAction={enableCam} />
+    </div> */}
+  </div>
     
   );
 };

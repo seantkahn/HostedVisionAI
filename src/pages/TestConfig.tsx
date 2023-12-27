@@ -52,6 +52,7 @@ const TestConfig: React.FC = () => {
             <h1 className="question">Letters or Shapes?</h1>
           </IonLabel>
           <IonSelect
+            label = "Letters or Shapes?"
             value={testMode}
             placeholder="Select Letters or Shapes"
             onIonChange={(e) => setTestMode(e.detail.value)}
@@ -91,6 +92,7 @@ const TestConfig: React.FC = () => {
             <h1 className="question">Which eye will you be testing?</h1>
           </IonLabel>
           <IonSelect
+            label="Which eye will you be testing?"
             value={eyeToExamine}
             placeholder="Select an eye"
             onIonChange={(e) => setEyeToExamine(e.detail.value)}
