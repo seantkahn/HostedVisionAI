@@ -150,10 +150,12 @@ const LetterTest: React.FC = () => {
       if (currentGreenLetterCount >= 3) {
         decreaseFontSize();
       }
-      if (newCount <= 1 && currentGreenLetterCount < 3) {
+      if (visualAcuityIndex === 7) {
         setRandomString(generateRandomString(4));
       }
-      setRandomString(generateRandomString(5));
+      else{
+        setRandomString(generateRandomString(5));
+      }
     }
   };
 

@@ -138,11 +138,12 @@ const ShapeTest: React.FC = () => {
       if (currentGreenIconCount >= 3) {
         decreaseFontSize();
       }
-      if (newCount <= 1 && currentGreenIconCount < 3) {
+      if (visualAcuityIndex === 7) {
         setRandomString(generateRandomString(4));
       }
-      setRandomString(generateRandomString(5));
-
+      else{
+        setRandomString(generateRandomString(5));
+      }
     }
   };
 
