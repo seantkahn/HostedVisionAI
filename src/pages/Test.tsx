@@ -146,19 +146,17 @@ const Test: React.FC = () => {
       <IonContent fullscreen className="ion-padding" scrollY={false}>
         <div className="instructions-container">
           <p className="instructions-text">
-            Hold your face in front of your webcam and tap/click the screen once or twice for live distance calculations <br />
+            To begin the test, position your face in front of your webcam. For accurate distance measurements, tap or click the screen once, or twice for active calculations. 
             <br />
-            Grant access to the webcam if
-            prompted. Face should be parallel/level with camera and environment
-            should be well lit.{" "}
+            Maintain a distance of approximately 14 inches from the camera to ensure the test conditions are correct.
             <br />
-            If you are testing one eye, cover the eye that is not being tested. 
-            Wear glasses if you are looking to see if you need a new prescription.
+            Please grant camera access when requested. Ensure your face is level with the camera and the room is well-lit. 
             <br />
-            You will be prompted with five letters at a time. Say the letter and wait for the results.
+            If you're testing a single eye, cover the other. If you normally wear glasses, please keep them on to check if your prescription needs updating.
             <br />
-            Ensure you are 14 inches away from the camera for correct testing conditions.
-            End the test when you can no longer read the letters or images clearly or if you cannot get 3/5 correct.
+            During the test, you'll see groups of five letters or symbols. Read each out loud and wait for it to turn green. 
+            <br />
+            Conclude the test if the letters or images become unclear, or if you cannot identify at least three out of five consistently.
           </p>
         </div>
         <Button buttonText="Continue" onClickAction={goToSampleTest}/>

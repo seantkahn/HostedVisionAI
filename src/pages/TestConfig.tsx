@@ -50,7 +50,7 @@ const TestConfig: React.FC = () => {
 
 
         <div className="selection-section">
-        <h1 className="question">Letters or Images?</h1>
+        <h1 className="question">Test with Letters or Images?</h1>
         <div className="selection-card-container">
           <CardSelection title="Letters" selected={testMode === "Letters"} onSelect={setTestMode} />
           <CardSelection title="Images" selected={testMode === "Images"} onSelect={setTestMode} />

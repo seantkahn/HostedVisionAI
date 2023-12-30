@@ -53,10 +53,14 @@ useEffect(() => {
     <IonPage>
       <Header headerText="Tap Video Output for Distance" />
       <IonContent fullscreen scrollY={true}>
-        <PreTest />
+        <div>
+          <PreTest />
+        </div>
+      <div>
         <div className="continue-button-div">
           <Button buttonText="Continue" onClickAction={continueToExam} />
         </div>
+      </div>
       </IonContent>
     </IonPage>
   );
