@@ -1,8 +1,11 @@
-import { Redirect, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import Home from "./pages/Home";
 import Terms from "./pages/Terms";
+
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -32,6 +35,8 @@ import LetterTest from "./pages/LetterTest";
 import ShapeTest from "./pages/ShapeTest";
 import Results from "./pages/Results";
 import VoiceTest from "./pages/VoiceTest";
+import DistanceTest from "./pages/DistanceTest";
+
 
 setupIonicReact();
 
@@ -52,7 +57,8 @@ const App: React.FC = () => (
         <Route path="/LetterTest" component={LetterTest} exact />
         <Route path="/ShapeTest" component={ShapeTest} exact />
         <Route path="/Results" component={Results} exact />
-        <Route path="/VoiceTest" component={VoiceTest} exact />
+        <Route path="/DistanceTest" component={DistanceTest} exact />
+
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

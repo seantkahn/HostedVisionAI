@@ -13,7 +13,7 @@ interface LocationState {
   eyeStrength?: string;
 }
 
-function getDynamicFontSize(physicalSizeMm) {
+function getDynamicFontSize(physicalSizeMm: number) {
   function getDevicePixelRatio() {
     if (window.screen.systemXDPI !== undefined && window.screen.logicalXDPI !== undefined && window.screen.systemXDPI > window.screen.logicalXDPI) {
       return window.screen.systemXDPI / window.screen.logicalXDPI;
@@ -59,7 +59,7 @@ const LetterTest: React.FC = () => {
   const visualAcuityMeasurements = [0.8, 1, 1.2, 1.5, 2, 2.8, 4, 8];
   const eyeStrengthValues = ['20/20', '20/25', '20/30', '20/40', '20/50', '20/70', '20/100', '20/200'];
 
-  const getFontSizePx = (mm) => {
+  const getFontSizePx = (mm: number) => {
     return getDynamicFontSize(mm);
   };
 
@@ -68,12 +68,12 @@ const LetterTest: React.FC = () => {
   useEffect(() => {
     if ("webkitSpeechRecognition" in window) {
       const webkitRecognition = new window.webkitSpeechRecognition();
-      const speechRecognitionList = new window.webkitSpeechGrammarList();
-      const grammar =
-        "#JSGF V1.0; grammar lettersAndNumbers; public <letterOrNumber> = (A | B | C | D | ... | Z | 0 | 1 | 2 | ... | 9);";
-      speechRecognitionList.addFromString(grammar, 1);
+      // const speechRecognitionList = new window.webkitSpeechGrammarList();
+      // const grammar =
+      //   "#JSGF V1.0; grammar lettersAndNumbers; public <letterOrNumber> = (A | B | C | D | ... | Z | 0 | 1 | 2 | ... | 9);";
+      // speechRecognitionList.addFromString(grammar, 1);
   
-      webkitRecognition.grammars = speechRecognitionList;
+      // webkitRecognition.grammars = speechRecognitionList;
       webkitRecognition.maxAlternatives = 1;
       webkitRecognition.continuous = true;
       webkitRecognition.interimResults = true;

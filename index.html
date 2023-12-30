@@ -3,13 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <title>Vision AI</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.mjs"
+    crossorigin="anonymous" type="module"></script>
 
     <base href="/" />
 
     <meta name="color-scheme" content="light dark" />
     <meta
       name="viewport"
-      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
@@ -17,6 +19,48 @@
     <link rel="manifest" href="/manifest.json" />
 
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<!-- Include TensorFlow.js Core -->
+<!-- Require the peer dependencies of face-landmarks-detection. -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+<!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle.
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+
+Add the WebGPU backend to the global backend registry 
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgpu/dist/tf-backend-webgpu.js"></script>
+
+ Adds the WebGL backend to the global backend registry -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+
+<!-- Adds the WASM backend to the global backend registry -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/tf-backend-wasm.js"></script>
+
+<!-- Adds the CPU backend to the global backend registry -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-cpu"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+
+<script>
+  async function main() {
+    // Your TensorFlow.js code here
+  }
+
+  // Example of choosing the backend based on device capabilities
+  async function chooseBackend() {
+    if (tf.backend.webgpu && navigator.gpu) {
+      await tf.setBackend('webgpu');
+    } else if (tf.backend.wasm) {
+      await tf.setBackend('wasm');
+    } else {
+      await tf.setBackend('webgl');
+    }
+    await main();
+  }
+
+  chooseBackend();
+</script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"

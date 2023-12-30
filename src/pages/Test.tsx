@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { IonPage, IonContent, IonButton, IonIcon } from "@ionic/react";
 import { eyeOutline } from "ionicons/icons";
+import { Category, DrawingUtils, FaceLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
+
+import { Camera } from "@mediapipe/camera_utils";
+
 import * as vision from "@mediapipe/tasks-vision";
 import SampleTest from "../components/PreTest";
 import { useHistory } from "react-router-dom";
@@ -49,18 +53,18 @@ const Test: React.FC = () => {
     return (focalLengthPixels * knownWidthMm) / pixelDistanceBetweenEyes;
   }
 
-  useEffect(() => {
-    createFaceLandmarker();
+  // useEffect(() => {
+  //   createFaceLandmarker();
 
-    // The cleanup function will handle unmounting
-    return () => {
-      if (webcamRef.current && webcamRef.current.srcObject) {
-        const mediaStream = webcamRef.current.srcObject as MediaStream;
-        const tracks = mediaStream.getTracks();
-        tracks.forEach((track) => track.stop());
-      }
-    };
-  }, []);
+  //   // The cleanup function will handle unmounting
+  //   return () => {
+  //     if (webcamRef.current && webcamRef.current.srcObject) {
+  //       const mediaStream = webcamRef.current.srcObject as MediaStream;
+  //       const tracks = mediaStream.getTracks();
+  //       tracks.forEach((track) => track.stop());
+  //     }
+  //   };
+  // }, []);
 
   const createFaceLandmarker = async () => {
     const filesetResolver = await vision.FilesetResolver.forVisionTasks(
@@ -74,7 +78,7 @@ const Test: React.FC = () => {
             "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
           delegate: "GPU",
         },
-        outputFaceBlendshapes: true,
+        // outputFaceBlendshapes: true,
         runningMode: "VIDEO",
         numFaces: 1,
       }
@@ -111,14 +115,6 @@ const Test: React.FC = () => {
     }
   };
 
-  // const calculatePixelDistance = (
-  //   x1: number,
-  //   y1: number,
-  //   x2: number,
-  //   y2: number
-  // ): number => {
-  //   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-  // };
 
   const predictWebcam = async () => {
     const video = webcamRef.current;
@@ -150,23 +146,19 @@ const Test: React.FC = () => {
       <IonContent fullscreen className="ion-padding" scrollY={false}>
         <div className="instructions-container">
           <p className="instructions-text">
-            Hold your face in front of your webcam to get real-time face
-            landmarker detection. <br />
+            Hold your face in front of your webcam and tap/click the screen once or twice for live distance calculations <br />
             <br />
             Grant access to the webcam if
             prompted. Face should be parallel/level with camera and environment
             should be well lit.{" "}
-            <br /><br />
-            If you are testing one eye, cover the eye that is not being tested.
-            <br /><br />
+            <br />
+            If you are testing one eye, cover the eye that is not being tested. 
             Wear glasses if you are looking to see if you need a new prescription.
-            <br /><br />
+            <br />
             You will be prompted with five letters at a time. Say the letter and wait for the results.
-            <br /><br />
+            <br />
             Ensure you are 14 inches away from the camera for correct testing conditions.
-            <br /><br />
             End the test when you can no longer read the letters or images clearly or if you cannot get 3/5 correct.
-            <br /><br />
           </p>
         </div>
         <Button buttonText="Continue" onClickAction={goToSampleTest}/>
