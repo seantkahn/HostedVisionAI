@@ -29,12 +29,12 @@ function getDynamicFontSize(physicalSizeMm: number) {
   return physicalSizeInches * effectivePpi;
 }
 
-const generateRandomString = () => {
+const generateRandomString = (numLetters: number) => {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let randomString = [];
   let usedIndices = new Set();
 
-  while (randomString.length < 5) {
+  while (randomString.length < numLetters) {
     const randomIndex = Math.floor(Math.random() * alphabet.length);
     if (!usedIndices.has(randomIndex)) {
       usedIndices.add(randomIndex);
@@ -49,7 +49,7 @@ const LetterTest: React.FC = () => {
   const location = useLocation<LocationState>();
   const { testMode, eyeToExamine } = location.state || {};
   const history = useHistory();
-  const [randomString, setRandomString] = useState(generateRandomString());
+  const [randomString, setRandomString] = useState(generateRandomString(4));
   const [buttonPressCount, setButtonPressCount] = useState(0);
   // const [fontSize, setFontSize] = useState(70);
   const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
@@ -127,14 +127,14 @@ const LetterTest: React.FC = () => {
   const increaseFontSize = () => {
     if (visualAcuityIndex < visualAcuityMeasurements.length - 1) {
       setVisualAcuityIndex(visualAcuityIndex + 1);
-      setRandomString(generateRandomString());
+      setRandomString(generateRandomString(5));
     }
   };
 
   const decreaseFontSize = () => {
     if (visualAcuityIndex > 0) {
       setVisualAcuityIndex(visualAcuityIndex - 1);
-      setRandomString(generateRandomString());
+      setRandomString(generateRandomString(5));
     }
   };
 
@@ -151,7 +151,7 @@ const LetterTest: React.FC = () => {
         decreaseFontSize();
       }
   
-      setRandomString(generateRandomString());
+      setRandomString(generateRandomString(5));
     }
   };
 

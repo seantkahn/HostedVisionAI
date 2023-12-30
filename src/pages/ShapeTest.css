@@ -47,6 +47,7 @@
   flex-direction: row;
   justify-content: space-around; /* Adjust as needed, e.g., space-between, space-evenly */
   align-items: center; /* Align items vertically */
+  
 }
 
 .text {

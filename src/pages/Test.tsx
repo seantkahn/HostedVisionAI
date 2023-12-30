@@ -152,7 +152,7 @@ const Test: React.FC = () => {
             <br />
             If you're testing a single eye, cover the other. If you normally wear glasses, please keep them on to check if your prescription needs updating.
             During the test, you'll see groups of five letters or symbols. Read each out loud and wait for it to turn green. Say or click "Next" to generate the next line.
-            Conclude the test if the letters or images become unclear, or if you cannot identify at least three out of five consistently.
+            Conclude the test if the letters or images become unclear, or if you cannot identify at least three consistently.
           </p>
         </div>
         <Button buttonText="Continue" onClickAction={goToSampleTest}/>

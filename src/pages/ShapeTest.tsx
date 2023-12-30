@@ -36,7 +36,7 @@ function getDynamicFontSize(physicalSizeMm: any) {
   return physicalSizeInches * effectivePpi;
 }
 
-const generateRandomString = () => {
+const generateRandomString = (numIcons: number) => {
   const icons = [
     { icon: <CiApple />, keyword: "apple" },
     { icon: <PiBirdBold />, keyword: "bird" },
@@ -52,7 +52,7 @@ const generateRandomString = () => {
   let randomString = [];
   let usedKeywords = new Set();
 
-  while (randomString.length < 5) {
+  while (randomString.length < numIcons) {
     const randomIndex = Math.floor(Math.random() * icons.length);
     const selectedIcon = icons[randomIndex];
 
@@ -70,7 +70,7 @@ const ShapeTest: React.FC = () => {
   const location = useLocation<LocationState>();
   const { testMode, eyeToExamine } = location.state || {};
   const history = useHistory();
-  const [randomString, setRandomString] = useState(generateRandomString());
+  const [randomString, setRandomString] = useState(generateRandomString(4));
   const [buttonPressCount, setButtonPressCount] = useState(0);
   const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
   
@@ -139,7 +139,7 @@ const ShapeTest: React.FC = () => {
         decreaseFontSize();
       }
   
-      setRandomString(generateRandomString());
+      setRandomString(generateRandomString(5));
     }
   };
 
@@ -163,14 +163,14 @@ const ShapeTest: React.FC = () => {
   const increaseFontSize = () => {
     if (visualAcuityIndex < visualAcuityMeasurements.length - 1) {
       setVisualAcuityIndex(visualAcuityIndex + 1);
-      setRandomString(generateRandomString());
+      setRandomString(generateRandomString(5));
     }
   };
 
   const decreaseFontSize = () => {
     if (visualAcuityIndex > 0) {
       setVisualAcuityIndex(visualAcuityIndex - 1);
-      setRandomString(generateRandomString());
+      setRandomString(generateRandomString(5));
     }
   };
 
