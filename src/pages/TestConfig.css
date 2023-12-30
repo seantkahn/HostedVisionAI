@@ -30,3 +30,22 @@
 .padding {
   padding-bottom: 30px;
 }
+.selection-section {
+  margin-bottom: 20px;
+}
+
+.selection-card-container {
+  display: flex;
+  justify-content: space-around; /* This will space out your cards evenly */
+}
+
+.selection-card {
+  flex-basis: calc(50% - 10px); /* Adjust the spacing between cards here */
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  /* other styles ... */
+}

@@ -29,6 +29,12 @@ repositories {
         dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
     }
 }
+plugins {
+  id 'com.android.application'
+
+  // Add the Google services Gradle plugin
+  id 'com.google.gms.google-services'
+}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -40,6 +46,12 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation project(':capacitor-cordova-android-plugins')
+    //import the firebazse BoM
+      implementation platform('com.google.firebase:firebase-bom:32.7.0')
+  // TODO: Add the dependencies for Firebase products you want to use
+  // When using the BoM, don't specify versions in Firebase dependencies
+  // https://firebase.google.com/docs/android/setup#available-libraries
+
 }
 
 apply from: 'capacitor.build.gradle'

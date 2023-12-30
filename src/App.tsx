@@ -6,7 +6,6 @@ import { IonReactRouter } from "@ionic/react-router";
 import Home from "./pages/Home";
 import Terms from "./pages/Terms";
 
-
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 
@@ -36,7 +35,6 @@ import ShapeTest from "./pages/ShapeTest";
 import Results from "./pages/Results";
 import VoiceTest from "./pages/VoiceTest";
 import DistanceTest from "./pages/DistanceTest";
-
 
 setupIonicReact();
 

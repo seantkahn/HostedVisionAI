@@ -23,7 +23,7 @@ import Header from "../components/Header/Header";
 import Button from "../components/Button/Button";
 import Results from "./Results";
 import "./TestConfig.css";
-
+import CardSelection from '../components/CardSelection/CardSelection'; 
 const TestConfig: React.FC = () => {
   const history = useHistory();
   const [showDatePicker, setShowDatePicker] = useState(false); 
@@ -47,64 +47,26 @@ const TestConfig: React.FC = () => {
     <IonPage>
       <Header headerText="Personal Configuration"/>
       <IonContent scrollY={false}>
-      <IonItem>
-          <IonLabel position="stacked">
-            <h1 className="question">Letters or Shapes?</h1>
-          </IonLabel>
-          <IonSelect
-            label = "Letters or Shapes?"
-            value={testMode}
-            placeholder="Select Letters or Shapes"
-            onIonChange={(e) => setTestMode(e.detail.value)}
-          >
-            <IonSelectOption value="Letters">Letters</IonSelectOption>
-            <IonSelectOption value="Images">Shapes</IonSelectOption>
-          </IonSelect>
-        </IonItem>
-        {/* <IonItem onClick={() => setShowDatePicker(true)}>
-          <IonLabel position="stacked">
-            <h1 className="question">What is your birth year?</h1>
-          </IonLabel>
-          <IonInput
-            readonly
-            value={
-              birthYear ? new Date(birthYear).getFullYear().toString() : ""
-            }
-            placeholder="Select Birth Year"
-          />
-        </IonItem> */}
-        {/* <IonItem>
-          <IonLabel position="stacked">
-            <h1 className="question">Do you wear glasses?</h1>
-          </IonLabel>
-          <IonSelect
-            value={wearGlasses}
-            placeholder="Select Yes or No"
-            onIonChange={(e) => setWearGlasses(e.detail.value)}
-          >
-            <IonSelectOption value="Yes">Yes</IonSelectOption>
-            <IonSelectOption value="No">No</IonSelectOption>
-          </IonSelect>
-        </IonItem> */}
 
-        <IonItem>
-          <IonLabel position="stacked">
-            <h1 className="question">Which eye will you be testing?</h1>
-          </IonLabel>
-          <IonSelect
-            label="Which eye will you be testing?"
-            value={eyeToExamine}
-            placeholder="Select an eye"
-            onIonChange={(e) => setEyeToExamine(e.detail.value)}
-          >
-            <IonSelectOption value="Left Eye">Left Eye</IonSelectOption>
-            <IonSelectOption value="Right Eye">Right Eye</IonSelectOption>
-            <IonSelectOption value="Both">Both</IonSelectOption>
-          </IonSelect>
-        </IonItem>
-        <div className="padding"></div>
+
+        <div className="selection-section">
+        <h1 className="question">Letters or Images?</h1>
+        <div className="selection-card-container">
+          <CardSelection title="Letters" selected={testMode === "Letters"} onSelect={setTestMode} />
+          <CardSelection title="Images" selected={testMode === "Images"} onSelect={setTestMode} />
+        </div>
+      </div>
+
+      <div className="selection-section">
+        <h1 className="question">Which eye will you be testing?</h1>
+        <div className="selection-card-container">
+          <CardSelection title="Left Eye" selected={eyeToExamine === "Left Eye"} onSelect={setEyeToExamine} />
+          <CardSelection title="Right Eye" selected={eyeToExamine === "Right Eye"} onSelect={setEyeToExamine} />
+          <CardSelection title="Both" selected={eyeToExamine === "Both"} onSelect={setEyeToExamine} />
+        </div>
+      </div>
+      <div className="padding"></div>
         <Button buttonText="Continue" onClickAction={continueToPreTest} />
-
         {/* <IonModal
           isOpen={showDatePicker}
           onDidDismiss={() => setShowDatePicker(false)}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "771222648473",
+    "project_id": "vision-ai-host",
+    "storage_bucket": "vision-ai-host.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771222648473:android:f4bf6b530bc7980cf16a08",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXyhxN9VqB8ULScPeKm97XOfOjq4zst5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

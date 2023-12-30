@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist",
+    "site": "vision-ai-host",
     "ignore": [
       "firebase.json",
       "**/.*",
