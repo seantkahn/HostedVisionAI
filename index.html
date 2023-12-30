@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <title>Vision AI</title>
+    <meta name="description" content="A near-vision based, artificial intelligence powered Eye-Exam ">
+
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.mjs"
     crossorigin="anonymous" type="module"></script>
     <script type="module">
@@ -26,18 +28,23 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
     </script>
+    
     <base href="/" />
 
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light dark" minimum-scale=1.0, maximum-scale=1.0 />
+    <meta name="theme-color" content="#light dark">
+
     <meta
       name="viewport"
-      content="viewport-fit=cover, width=device-width, initial-scale=1.0, user-scalable=yes"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0"
     />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
 
     <link rel="manifest" href="/manifest.json" />
-
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180">
+    <link rel="mask-icon" href="/favicon.svg" color="#FFFFFF">
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
 <!-- Include TensorFlow.js Core -->
 <!-- Require the peer dependencies of face-landmarks-detection. -->
@@ -103,6 +110,7 @@ Add the WebGPU backend to the global backend registry
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Vision AI" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
   </head>
   <body>
     <div id="root"></div>
