@@ -3,9 +3,10 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 30vh;
   transform: translateY(-50%);
 }
+
 
 #container strong {
   font-size: 20px;
@@ -24,16 +25,33 @@
 }
 
 .welcome-title {
-  margin-top: 200px;
+  margin-top: 10vh; /* Use viewport height for relative spacing */
   font-weight: bold;
-  font-size: 50px;
+  font-size: 4vw; /* Responsive font size */
   text-align: center;
 }
 
 .app-description {
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-bottom: 30px;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-bottom: 5vh;
   color: #8c8c8c;
   text-align: center;
+  font-size: 1vw; /* Increase font size */
+
+}
+@media (max-width: 600px) {
+  .welcome-title {
+    font-size: 12vw; /* Adjust font size for smaller screens */
+  }
+  .app-description {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    font-size: 5vw; /* Increase font size */
+
+  }
+
+  #container strong, #container p {
+    font-size: 5vw; /* Smaller font size on smaller screens */
+  }
 }

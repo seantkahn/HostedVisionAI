@@ -194,19 +194,19 @@ const LetterTest: React.FC = () => {
         <div className="letter-button-container">
           <button className="letter-button" onClick={toggleListening}>
             <h1>{isListening ? "Stop Speech Recognition" : "Start Speech Recognition"}</h1>
-            <IonIcon className="eye" slot="end" size="large" icon={eyeOutline}></IonIcon>
+            <IonIcon className="eye" aria-label="Eye Icon" slot="end" size="large" icon={eyeOutline}></IonIcon>
           </button>
         </div>
         <div className="letter-next-button-container">
           <button className="letter-next-button" onClick={updateRandomIcons}>
             <h1>Next</h1>
-            <IonIcon className="eye" slot="end" size="large" icon={eyeOutline}></IonIcon>
+            <IonIcon className="eye" aria-label="Eye Icon" slot="end" size="large" icon={eyeOutline}></IonIcon>
           </button>
         </div>
         <div className="letter-end-button-container">
           <button className="letter-end-button" onClick={endTest}>
             <h1>End Test</h1>
-            <IonIcon className="eye" slot="end" size="large" icon={eyeOutline}></IonIcon>
+            <IonIcon className="eye" aria-label="Eye Icon" slot="end" size="large" icon={eyeOutline}></IonIcon>
           </button>
         </div>
         <IonText style={{ textAlign: "center" }}>
