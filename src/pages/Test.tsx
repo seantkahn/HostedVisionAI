@@ -143,7 +143,7 @@ const Test: React.FC = () => {
     <IonPage>
       <Header headerText="Instructions"/>
       
-      <IonContent fullscreen className="ion-padding" scrollY={false}>
+      <IonContent fullscreen className="ion-padding" scrollY={true}>
         <div className="instructions-container">
           <p className="instructions-text">
             To begin the test, position your face in front of your webcam. For accurate distance measurements, tap or click the screen once, or twice for active calculations. 
