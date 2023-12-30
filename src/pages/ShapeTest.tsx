@@ -141,9 +141,8 @@ const ShapeTest: React.FC = () => {
       if (newCount <= 1 && currentGreenIconCount < 3) {
         setRandomString(generateRandomString(4));
       }
-      else{
-        setRandomString(generateRandomString(5));
-      }
+      setRandomString(generateRandomString(5));
+
     }
   };
 
@@ -224,6 +223,14 @@ const ShapeTest: React.FC = () => {
         <IonText style={{ textAlign: "center" }}>
           <h1>Shape Test: {buttonPressCount}/7</h1>
         </IonText>
+        <IonText style={{ textAlign: "center" }}>
+            <h1>
+            Identify each image out loud and wait for it to turn green. <br/><br/>
+            Click "Start Speech Recognition" When you are ready to begin.<br/>
+            Say or click "Next" to move to a new line.<br/>
+            Click "End Test" if the images become unclear, or if you cannot identify at least three items on each line consistently.</h1>
+        </IonText>
+
       </IonContent>
     </IonPage>
   );

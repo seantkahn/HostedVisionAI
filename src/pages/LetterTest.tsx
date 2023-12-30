@@ -153,9 +153,7 @@ const LetterTest: React.FC = () => {
       if (newCount <= 1 && currentGreenLetterCount < 3) {
         setRandomString(generateRandomString(4));
       }
-      else{
       setRandomString(generateRandomString(5));
-      }
     }
   };
 
@@ -211,6 +209,13 @@ const LetterTest: React.FC = () => {
         </div>
         <IonText style={{ textAlign: "center" }}>
           <h1>Letter Test: {buttonPressCount}/7</h1>
+        </IonText>
+        <IonText style={{ textAlign: "center" }}>
+            <h1>
+            Read each letter out loud and wait for it to turn green. <br/><br/>       
+            Click "Start Speech Recognition" When you are ready to begin.<br/>
+            Say or click "Next" to move to a new line.<br/>
+            Click "End Test" if the letters become unclear, or if you cannot identify at least three letters on each line consistently.</h1>
         </IonText>
       </IonContent>
     </IonPage>
