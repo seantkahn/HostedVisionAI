@@ -147,15 +147,11 @@ const Test: React.FC = () => {
         <div className="instructions-container">
           <p className="instructions-text">
             To begin the test, position your face in front of your webcam. For accurate distance measurements, tap or click the screen once, or twice for active calculations. 
-            <br />
             Maintain a distance of approximately 14 inches from the camera to ensure the test conditions are correct.
-            <br />
             Please grant camera access when requested. Ensure your face is level with the camera and the room is well-lit. 
             <br />
             If you're testing a single eye, cover the other. If you normally wear glasses, please keep them on to check if your prescription needs updating.
-            <br />
             During the test, you'll see groups of five letters or symbols. Read each out loud and wait for it to turn green. Say or click "Next" to generate the next line.
-            <br />
             Conclude the test if the letters or images become unclear, or if you cannot identify at least three out of five consistently.
           </p>
         </div>
