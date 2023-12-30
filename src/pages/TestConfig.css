@@ -25,6 +25,8 @@
 
 .question {
   margin-bottom: 0px;
+  text-align: center;
+  width: 100%; /* Ensure it takes the full width */
 }
 
 .padding {
