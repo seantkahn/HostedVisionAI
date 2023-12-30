@@ -2,6 +2,7 @@
   position: absolute;
   top: 0;
   justify-content: center;
+  height:100%;
 }
 .distance-button-div button {
   top: 400px;
@@ -15,7 +16,6 @@
 .output_canvas {
 z-index: 5;
 position: relative;
-
 }
 .webcam{
   z-index: 1;
@@ -73,12 +73,6 @@ Button {
   left: 0;
   right: 0;
 } */
-
-
-
-
-
-
 
 /* 
 .PreTest {

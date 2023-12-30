@@ -105,12 +105,16 @@ const ShapeTest: React.FC = () => {
           let transcript = event.results[i][0].transcript.trim().toLowerCase();
   
           console.log("Transcript:", transcript);
-  
-          setRandomString((currentString) =>
-            currentString.map((obj) =>
-              obj.keyword === transcript ? { ...obj, recognized: true } : obj
-            )
-          );
+          if (transcript.includes("next")) {
+            updateRandomIcons(); // Trigger the next button action when "next" is said
+          } 
+          else {
+            setRandomString((currentString) =>
+              currentString.map((obj) =>
+                obj.keyword === transcript ? { ...obj, recognized: true } : obj
+              )
+            );
+          }
         }
       };
   

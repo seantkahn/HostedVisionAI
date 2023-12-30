@@ -183,12 +183,16 @@ const PreTest: React.FC = () => {
         // console.log(`Distance from webcam: ${distanceFromWebcamInches.toFixed(2)} inches`);
           try{
         canvasCtx.font = '22px Arial';
-        canvasCtx.fillStyle = 'Yellow';
         canvasCtx.save(); // Save the current state
         // canvasCtx.scale(-1, 1); // Flip the context horizontally
         // canvasCtx.translate(-canvas.width, 0); // Translate the canvas context
   
-        canvasCtx.clearRect(0, 0, 200, 50); // Clear a rectangle for the text
+        canvasCtx.clearRect(0, 0, 300, 50); // Clear a rectangle for the text
+        // canvasCtx.fillStyle = 'whitesmoke';
+
+        // canvasCtx.fillRect(0, 0, 300, 50);        
+        canvasCtx.fillStyle = 'Yellow';
+
         canvasCtx.fillText(`Distance: ${distanceFromWebcamInches.toFixed(2)} inches`, 10, 30);
         canvasCtx.restore(); // Restore the original state
           }
@@ -223,6 +227,7 @@ const PreTest: React.FC = () => {
     //     </div>
     // </div>
     <div className="PreTest" onClick={enableCam}>
+      
     <Webcam ref={webcamRef} className="webcam" mirrored={true} autoPlay  />
     <canvas ref={canvasRef} className="output_canvas"></canvas>
     

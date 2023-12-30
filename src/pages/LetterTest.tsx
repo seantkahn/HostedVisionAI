@@ -52,7 +52,7 @@ const LetterTest: React.FC = () => {
   const [randomString, setRandomString] = useState(generateRandomString());
   const [buttonPressCount, setButtonPressCount] = useState(0);
   // const [fontSize, setFontSize] = useState(70);
-  const [recognition, setRecognition] = useState(null);
+  const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
   const [isListening, setIsListening] = useState(false);
   const [visualAcuityIndex, setVisualAcuityIndex] = useState(7); // Initial visual acuity index for 20/20 vision
   // const visualAcuityMeasurements = [0.23, 0.29, 0.35, 0.47, 0.58, 0.82, 1.23, 2.51];
@@ -102,16 +102,21 @@ const LetterTest: React.FC = () => {
           });
   
           console.log("Transcript:", transcript);
-  
-          setRandomString((currentString) =>
-            currentString.map((obj) =>
-              obj.letter === transcript ? { ...obj, recognized: true } : obj
-            )
-          );
+          
+          if (transcript.includes("next")) {
+            updateRandomIcons(); // Trigger the next button action when "next" is said
+          } 
+          else {
+            setRandomString((currentString) =>
+              currentString.map((obj) =>
+                obj.letter === transcript ? { ...obj, recognized: true } : obj
+              )
+            );
+          }
         }
       };
   
-      setRecognition(webkitRecognition);
+      const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
     } else {
       alert(
         "Your browser does not support the Web Speech API. Please use Chrome or Safari."
