@@ -180,7 +180,7 @@ const ShapeTest: React.FC = () => {
   return (
     <IonPage>
       <Header headerText="Vision Test" />
-      <IonContent className="ion-padding" scrollY={false}>
+      <IonContent className="ion-padding" scrollY={true}>
         <IonText className="testIcon" style={{ fontSize: `${fontSizePx}px` }}>
           <div className="icons-div">
             {randomString.map((obj, index) => (

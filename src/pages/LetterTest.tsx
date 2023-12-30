@@ -177,7 +177,7 @@ const LetterTest: React.FC = () => {
   return (
     <IonPage>
       <Header headerText="Vision Test" />
-      <IonContent className="ion-padding" scrollY={false}>
+      <IonContent className="ion-padding" scrollY={true}>
         <IonText className="testText" style={{ fontSize: `${fontSizePx}px` }}>
           {randomString.map((obj, index) => (
             <span
