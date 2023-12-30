@@ -116,7 +116,7 @@ const LetterTest: React.FC = () => {
         }
       };
   
-      const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
+      setRecognition(webkitRecognition);
     } else {
       alert(
         "Your browser does not support the Web Speech API. Please use Chrome or Safari."
