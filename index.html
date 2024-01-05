@@ -4,7 +4,26 @@
     <meta charset="utf-8" />
     <title>Vision AI</title>
     <meta name="description" content="A near-vision based, artificial intelligence powered Eye-Exam ">
-
+    <meta name="author" content="Team SCRUMptious">
+    <!-- Specifies keywords for search engines. It's not used much by search engines anymore. -->
+    <meta name="keywords" content="Vision, eye exam, eye test, AI, eye, eyes, near sight, distance, app, website, results, accurate">
+    <!-- security feature that instructs the browser to upgrade all HTTP requests to HTTPS -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!-- The og: meta tags are used for Open Graph protocol, which allows any web page to become a rich object in a social graph. These are used by social media platforms like Facebook and LinkedIn when your website is shared. -->
+    <meta property="og:title" content="VisionAI">
+        <!-- This Open Graph protocol tag provides a brief description of the content, typically between 2 and 4 sentences. This will be used by social media platforms to describe the webpage when it's shared. -->
+    <meta property="og:description" content="A near-vision based, artificial intelligence powered Eye-Exam.">
+        <!-- This Open Graph protocol tag specifies the URL of the image that appears when the webpage is shared on social media platforms. Here, it's set to "thumbnail.jpg", which should be the path to the image file on your server. -->
+    <meta property="og:image" content="favicon.png">
+        <!-- This Open Graph protocol tag defines the canonical URL for your page. This URL is used by social media platforms to identify the unique URL of the webpage when it's shared. -->
+    <meta property="og:url" content="https://vision-ai-host.web.app">        
+        <!--The twitter:card meta tag is used by Twitter and specifies how your website should be displayed when shared on Twitter. The summary_large_image value means that a large image will be displayed in the Twitter card along with the title and description. -->
+        <!-- The image, title, and description are taken from the corresponding Open Graph tags (og:image, og:title, and og:description). -->
+    <meta name="twitter:card" content="summary_large_image">
+        <!-- This gives instructions to web robots AKA crawlers, used by search engines to index the web. "index" tells the robot to index this page (i.e., include it in the search engine's results), "follow" tells it to follow links from this page to other pagesand index those as well. 
+        <-- This is the default behavior for most web robots, so this tag is often included for completeness but isn't strictly necessary.. -->
+    <meta name="robots" content="index, follow">
+    
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.mjs"
     crossorigin="anonymous" type="module"></script>
     <script type="module">
@@ -16,7 +35,7 @@
     
       // Your web app's Firebase configuration
       const firebaseConfig = {
-        apiKey: //insert API key from firebase console, removed for  security purposes,
+        //apiKey: insert API key from firebase console, removed for  security purposes,
         authDomain: "vision-ai-host.firebaseapp.com",
         projectId: "vision-ai-host",
         storageBucket: "vision-ai-host.appspot.com",
